@@ -1,19 +1,31 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Создание рецепта
+    Создание рецепта
 {% endblock %}
 
 {% block content %}
 
-<h2>Добавление рецепта</h2>
-<form action="" method="post" enctype="multipart/form-data">
-   {% csrf_token %}
-    {{ form.as_p }}
+    <h2>Добавление рецепта</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.name != 'author' %}
+            <p>
+                {{ field.label_tag }}
+                {{ field }}
+            </p>
+            {% else %}
+            {% if user.is_authenticated %}
+                <input type="hidden" name="{{ field.name }}" value="{{ user.id }}">
+            {% else %}
+                  <input type="hidden" name="{{ field.name }}" value="3">
+{% endif %}
+            {% endif %}
+        {% endfor %}
 
-
-    <button type="submit"> Сохранить </button>
-    <button type="submit"><a href="{% url 'home' %}">Отмена</a></button>
-</form>
+        <button type="submit"> Сохранить</button>
+        <button type="submit"><a href="{% url 'home' %}">Отмена</a></button>
+    </form>
 
 {% endblock %}
