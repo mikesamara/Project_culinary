@@ -35,6 +35,11 @@ class Recipe(models.Model):
         words = self.description.split()
         return f'{" ".join(words[:10])}'
 
+     def get_steps(self):
+        words = self.steps_cooking.split()
+        return f'{" ".join(words[:50])}'
+
+
 
 
 
