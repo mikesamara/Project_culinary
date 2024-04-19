@@ -1,0 +1,8 @@
+
+/static/
+*.sqlite3
+*.log
+*.venv
+
+*.pyc
+f4dd179dbb99a07acc473441667d22dcc1350539fbbde2d8bc778ee3f487fed8

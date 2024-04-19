@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Список продуктов {% endblock %}
+
+{% block content %}
+
+
+<a href="{% url 'add_recipe' %}"> Добавить рецепт  </a>
+<table border="1xp">
+    <tr>
+        <td>
+            <p>Название рецепта</p>
+
+        </td>
+        <td>
+            <p>Ингредиенты</p>
+        </td>
+        <td><p>Шаги приготовление </p></td>
+        <td><p>Время</p></td>
+
+        <td><p>Автор рецепта</p></td>
+        <td><p>Дата добавления</p></td>
+    </tr>
+    {% for i in recipes_order %}
+    <tr>
+        <td><a href="{% url 'recept_text' i.id %}">    {{ i.name_recipe }} {{ i.image }}</a>
+
+        </td>
+        <td>
+            {{ i.ingredients }}
+        </td>
+        <td>{{ i.steps_cooking }}
+        </td>
+        <td>
+            {{ i.time_cooking}}
+        </td>
+
+        <td>
+            {{ i.author }}
+        </td>
+        <td>
+            {{ i.data_add }}
+        </td>
+    </tr>
+
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
+

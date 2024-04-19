@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %} Главная страница {% endblock %}
+{% block content %}
+
+
+
+<table>
+    {% for i in list_categories %}
+    <tr>
+        <td><a href="recipe_full/{{ i.id }}/">
+            {{ i.name }}
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'all_recipe' %}">Все рецепты</a>
+<p>Если Вы хотите добавить свой рецепт <a href="{% url 'add_recipe' %}">нажмите сюда</a></p>
+
+<hr>
+<div>
+    <h1>Самые новые рецепты на сайте</h1>
+    <hr>
+    <table  >
+        <tr >
+            <td> Название рецепта
+                <hr>
+            </td>
+            <td> Краткое описание
+                <hr>
+            </td>
+            <td> Категория
+                <hr>
+            </td>
+
+
+        </tr>
+
+        {% for j in recipes %}
+
+        <tr >
+            <td ><a href="{% url 'recept_text' j.id %}">
+                {{ j.image }}
+                {{ j.name_recipe }}
+            </a>
+            </td>
+            <td>{{ j.get_summary }}</td>
+            <td>{{ j.category_recipe }}</td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}

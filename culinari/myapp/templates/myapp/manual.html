@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Рецепт приготовления {{ i.name_recipe }}{% endblock %}
+{% block content %}
+
+
+<a href="{% url 'all_recipe' %}">Все рецепты</a>
+<lu>
+        {% for i in  recipes_order %}
+    <li >
+        {{ i.name_recipe }}
+    </li>
+    <br>
+    <li>
+        Описание рецепта
+      <p>{{ i.description }}</p>
+    </li>
+    <li>
+        Ингридиенты которые нам понадобться
+       <p> {{ i.ingredients }}</p>
+    </li> <li>Время приготовления
+       <p>{{ i.time_cooking}}</p>
+    </li>
+    <li> Способ приготовления
+       <p>{{ i.steps_cooking }}</p>
+    </li> <li>
+  Фото приготовления
+   <p> {{ i.image }} </p></li>
+    <li>Автор и дата добавления
+         <p> {{ i.author }} {{ i.data_add }}
+   </p></li>
+
+    {% endfor %}
+</lu>
+<input type="button" onclick="history.back();" value="Назад"/>
+
+{% endblock %}
+
+

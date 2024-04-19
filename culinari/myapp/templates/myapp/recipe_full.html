@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ list_recipe_cagory.name }}{% endblock %}
+
+{% block content %}
+
+<h1>Рецепты по запросу {{ list_recipe_cagory.name }}</h1>
+
+<table border="1xp">
+    <tr>
+        <td>
+            <p>Название рецепта</p>
+
+        </td>
+        <td>
+            <p>Ингредиенты</p>
+        </td>
+        <td><p>Описание </p></td>
+        <td><p>Шаги приготовления</p></td>
+        <td><p>Картинки</p></td>
+        <td><p>Автор рецепта</p></td>
+        <td><p>Дата добавления</p></td>
+    </tr>
+    {% for i in lisrt_recipe %}
+
+    <tr>
+        <td>
+            <a href="{% url 'recept_text' i.id %}">{{ i.name_recipe }}</a>
+        </td>
+        <td>
+            {{ i.ingredients }}
+        </td>
+        <td>{{ i.steps_cooking }}
+        </td>
+        <td>
+            {{ i.time_cooking}}
+        </td>
+        <td>
+            {{ i.image }}
+        </td>
+        <td>
+            {{ i.author }}
+        </td>
+        <td>
+            {{ i.data_add }}
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}
